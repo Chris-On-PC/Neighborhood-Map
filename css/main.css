@@ -1,0 +1,15 @@
+body, 
+html{
+ height: 100%;
+ margin: 0;
+ box-sizing: border-box;
+ /*font-family:SIMPLIFICA;*/
+ padding: 0;
+}
+
+#map{
+	height: 60%;
+	border-width: 2px;
+	border-radius: 5px;
+	margin: 2%;
+}
