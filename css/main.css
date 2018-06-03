@@ -5,11 +5,71 @@ html{
  box-sizing: border-box;
  /*font-family:SIMPLIFICA;*/
  padding: 0;
+ /*background-color: #000000;*/
+}
+
+.header{
+	width: 100%;
+	height: 10%;
 }
 
 #map{
-	height: 60%;
+	box-sizing: border-box;
+	width: 65%;
+	height: 100%;
 	border-width: 2px;
 	border-radius: 5px;
-	margin: 2%;
+	border-style: solid;
+	border-color: #005c99;
+	display: inline-block;
+	float: left;
+	margin-left: 2%;
 }
+
+.container{
+	box-sizing: border-box;
+	width: 100%;
+	height: 90%;
+}
+
+.container h1{
+	text-align: center;
+	color: #001f33;
+}
+.options-box{
+	box-sizing: border-box;
+	width: 30%;
+	height: 100%;
+	border-width: 2px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #005c99;
+	display: inline-block;
+	float: left;
+	margin-left: 2%;
+}
+
+.options-box h2{
+	color: #001f33;
+	text-align: center;
+}
+
+.options-box button{
+
+	border-width: 2px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #005c99;
+	background-color: white;
+	
+}
+
+.options-box button:hover{
+	background-color: #005c99;
+	color: white;
+}
+
+#pano {
+        width: 200px;
+        height: 200px;
+      }
