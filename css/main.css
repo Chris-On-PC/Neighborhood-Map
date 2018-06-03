@@ -2,10 +2,8 @@ body,
 html{
  height: 100%;
  margin: 0;
- box-sizing: border-box;
- /*font-family:SIMPLIFICA;*/
  padding: 0;
- /*background-color: #000000;*/
+ box-sizing: border-box;
 }
 
 .header{
@@ -47,6 +45,7 @@ html{
 	display: inline-block;
 	float: left;
 	margin-left: 2%;
+	position:relative
 }
 
 .options-box h2{
@@ -54,22 +53,39 @@ html{
 	text-align: center;
 }
 
-.options-box button{
+#foursquareImg {
+	width: 150px;
+	height: 25px;
+}
 
-	border-width: 2px;
-	border-radius: 5px;
-	border-style: solid;
-	border-color: #005c99;
-	background-color: white;
+ul {
+    list-style-type: none;
+    margin: 3%;
+    padding: 0;
+}
+
+ul li {   
+    margin: 5px;
+    color: #001f33;
+}
+
+ul li:hover {
+    color: #005c99;
+}
+
+#filterInput {
+	margin-left: 3%;
+	max-width: 90%;
+}
+
+#foursquareBox {
 	
-}
+	width: 100%;
+	height:auto;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    position: absolute;
 
-.options-box button:hover{
-	background-color: #005c99;
-	color: white;
 }
-
-#pano {
-        width: 200px;
-        height: 200px;
-      }

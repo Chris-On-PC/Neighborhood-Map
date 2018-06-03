@@ -24,52 +24,21 @@
 		<div class="options-box">
 			<h2>What are you looking for?</h2>
 			<div>
-				<input placeholder="Search by location" data-bind="textInput: query" />
+				<input placeholder="Search by name" data-bind="textInput: query" id="filterInput"></input>
 			</div>
 			<div>
 				<ul data-bind='foreach: filteredMarkers'>
-					<b>
-					<li class='list-item' data-bind='text: name, click: onListItemClicked'></li>
-					</b>
+					<li class='list-item' data-bind='text: title, click: clickedListItem'></li>	
 				</ul>
 			</div>
-			<div>
-				<button id= "show-listings">Show Listings</button>
-				<button id= "hide-listings">Hide Listings</button>
-				<button id= "drawingtools">Enable Drawing Tools</button>
-			</div>
-			<hr>
-			<div>
-				<input id = "zoom-area" type="text" placeholder="Enter your desired location"></input>
-				<button id = "zoom">Zoom</button>
-			</div>
-			<hr>
-			<div>
-				<input id = "duration" type="text" placeholder="Enter time"></input>
-				<select id = "mode">
-					<option value="DRIVING">drive</option>
-            		<option value="WALKING">walk</option>
-            		<option value="BICYCLING">bike</option>
-            		<option value="TRANSIT">transit ride</option>
-				</select>
-
-				<input id = "interest-area" type="text" placeholder="Ex: High Tech Campus"></input>
-				<button id = "go-button">Go</button>
-			</div>
-			<hr>
-			<div>
-				<h3>Search for points of interest</h3> 
-				<input id = "places-search" type="text" placeholder="Ex: Burgers in Eindhoven"></input>
-				<button id = "go-places">Search</button>
-			</div>
-
+			<img src="img/Foursquare.png" id="foursquareBox">
 		</div>
 		<div id = "map"></div>	
 	</div>
 
 	<script type='text/javascript' src='js/knockout-3.4.2.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src='js/main.js'></script>
+	<script type="text/javascript" src='js/mainscript.js'></script>
 
 	<script async defer 
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7VPoNEotQGKhtsJ09av7uoRk-HO9BaVA&libraries=geometry,drawing,places&v=3&callback=initMap">
