@@ -11,5 +11,6 @@ Clone the Neighbourhood Map git repository to you local machine. Open the index.
 The app is build using google.maps API and Foursquare API. Please ensure that access to these site are not block from your local machine. 
 
 ## Built With
-Foursquare - the framework used. 
-Google Maps - Used to display location information.
+Knockout - the framework used. 
+Google Maps - Used to display location map.
+Foursquare - Used to gather location information.
