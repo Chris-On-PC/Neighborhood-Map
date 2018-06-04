@@ -71,6 +71,7 @@ ul li {
 
 ul li:hover {
     color: #005c99;
+    cursor: pointer;
 }
 
 #filterInput {
@@ -87,5 +88,9 @@ ul li:hover {
     margin-right: auto;
     bottom: 0;
     position: absolute;
+}
 
+#map-error {
+	margin: auto;
+	text-align: center;
 }
