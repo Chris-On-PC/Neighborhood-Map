@@ -1,4 +1,4 @@
-
+'use strict';
 // Foursquare API
 var ClientID = "O0TEKJDEK3MZWBFXZWZPD4R4MDWJDOI44HNTOBYYINMOQMLA";
 var ClientSecret = "LSXQBPX0DYMBZYAUHCSP5JWSNHFGYZBBPW2UUGTLPJ4XEY4A";
@@ -46,7 +46,7 @@ var MapViewModel = function(){
     } else {
 
       return ko.utils.arrayFilter(self.markersArray(), function(item) {
-        var result = (item.title().toLowerCase().search(filter) >= 0);
+        var result = (item.title.toLowerCase().search(filter) >= 0);
 
         if (item.marker) {
           item.marker.setVisible(result);
@@ -55,47 +55,42 @@ var MapViewModel = function(){
         });
     }
   });
-
-
 };
 
 // Model
 var Marker = function(markerItem){
   var self = this;
 
-  this.title = ko.observable(markerItem.title);
-  this.lat = ko.observable(markerItem.location.lat);
-  this.lng = ko.observable(markerItem.location.lng);
-  this.catagory = ko.observable("");
-  this.address = ko.observable("");
+  this.title = markerItem.title;
+  this.lat = markerItem.location.lat;
+  this.lng = markerItem.location.lng;
+  this.catagory = "";
+  this.address = "";
 
   var Url = "https://api.foursquare.com/v2/venues/search";
 
-  var APIUrl = Url + "?ll="+ self.lat() + "," + self.lng() + "&client_id="
+  var APIUrl = Url + "?ll="+ self.lat + "," + self.lng + "&client_id="
   + ClientID + "&client_secret=" + ClientSecret + "&v=20180323" +
-  "&query=" + self.title();
+  "&query=" + self.title;
 
   // Retrive marker information from foursquare API
    $.getJSON(APIUrl, function(data) {
     var result = data.response.venues[0];
 
-    self.address(result.location.formattedAddress);
-    self.catagory(result.categories.name);
-    self.title(result.name);
-
-      var marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
           position: {
-          lat: self.lat(),
-          lng: self.lng()
+          lat: self.lat,
+          lng: self.lng
           },
           animation: google.maps.Animation.DROP,
           map: map,
-          formatted_address: self.address(),
-          title: self.title(),
-          catagory: self.catagory()       
+          formatted_address: result.location.formattedAddress,
+          title: result.name,
+          catagory: result.categories[0].name       
       });
       marker.addListener("click", clickedMarker);
       self.marker = marker;
+      
       }).fail(function() {
         window.alert("Failed to retrieve data.");
    });
@@ -106,7 +101,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: 51.441642, lng: 5.469722},
-    zoom: 13,
+    zoom: 12,
     mapTypeControl: false
   });
   ko.applyBindings( new MapViewModel() );
@@ -117,11 +112,11 @@ var displayInfoWindow = function(marker) {
   var self = this;
 
   // initialize infowinow content
-  var infoContent = '<div id="content">' +
-  '<h3 id="heading" class="heading">' + marker.title + '</h3>' +
+  var infoContent = '<div class="infoContent">' +
+  '<h4 id="heading" class="heading">' + marker.title + '</h4>' +
   '<p>Catagory: ' + marker.catagory + '<br>' +
   'Address: ' + marker.formatted_address + '<br>' +
-  '<img src="img/Foursquare.png" id="foursquareImg" />'+
+  '<img src="img/Foursquare.png" class="foursquareImg" />'+
   '</div>';
 
   if (infoWindow) {
@@ -167,4 +162,10 @@ function googleMapsCustomError(){
   }
 }
 
-setTimeout(function() { googleMapsCustomError(); }, 3000);
+// Sidebar functionality
+$(document).ready(function () {
+
+    $('.sidebarCollapse').on('click', function () {
+        $('.sidebar').toggleClass('active');
+    });
+});

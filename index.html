@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -7,41 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<title>Places in Eindhoven</title>
 
 </head>
 <body>
-	
-	<header>
-	<div class="container">
-		<h1 class="center-text">What's up in Eindhoven?</h1>
-	</div>
-		
-	</header>
+	<div class="wrapper">
 
-	<div class="container">
-		<div class="options-box">
-			<h2>What are you looking for?</h2>
-			<div>
-				<input placeholder="Search by name" data-bind="textInput: query" id="filterInput"></input>
+	    <!-- Sidebar -->
+	    <nav class="sidebar">
+	        <div class="sidebar-header">
+            	<h3 class="side-bar-heading">What are you looking for?</h3>
+        	</div>
+        	<div class="filterArea">
+				<input placeholder="Search by name" data-bind="textInput: query" class="filterInput"/>
 			</div>
 			<div>
 				<ul data-bind='foreach: filteredMarkers'>
 					<li class='list-item' data-bind='text: title, click: clickedListItem'></li>	
 				</ul>
 			</div>
-			<img src="img/Foursquare.png" id="foursquareBox">
-		</div>
-		<div id = "map"><h3 id="map-error">Map Failed to load. Please contact admin.</h3></div>	
-	</div>
+	    </nav>
 
-	<script type='text/javascript' src='js/knockout-3.4.2.js'></script>
+	    <!-- Page Content -->
+	    <div class="content">
+
+	    	<nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="btn btn-info navbar-btn sidebarCollapse">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </button>
+                            <span class="navheader">Welcome to Eindhoven</span>
+                        </div>
+                    </div>
+                </nav>
+                
+    		<div id = "map" class="map-canvas"><img src="img/Spinner-1s-200px.gif" class="loading-spinner" alt="loading image"></div>
+    		<div class="line"></div>
+	    </div>
+
+	</div>  
+
+	<script src='js/knockout-3.4.2.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src='js/main.js'></script>
+	<script src='js/main.js'></script>
+
 
 	<script async defer 
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7VPoNEotQGKhtsJ09av7uoRk-HO9BaVA&v=3&callback=initMap">
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7VPoNEotQGKhtsJ09av7uoRk-HO9BaVA&v=3&callback=initMap" onerror="googleMapsCustomError()">
 	</script>
 
 </body>
